@@ -24,8 +24,8 @@ async function getDisplayProducts() {
     try {
 const product = await fetchProducts();
 
-const products = product.map((prod: any) => {
-    return new ElectronicsProduct (
+const products : ElectronicsProduct[] = product.map((prod : any) => {
+return new ElectronicsProduct (
         prod.id,
         prod.price,
         prod.category,
@@ -35,7 +35,7 @@ const products = product.map((prod: any) => {
         prod.rating
     );
 });
-products.forEach((p: { displayDetails: () => any; getPriceWithDiscount: () => any; getPriceWithTax: () => any; }) => {
+products.forEach((p) => {
     console.log(p.displayDetails());
     console.log(p.getPriceWithDiscount(), "after discount");
     console.log(p.getPriceWithTax(), "after tax")
