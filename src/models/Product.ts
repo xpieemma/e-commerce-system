@@ -17,30 +17,82 @@
  export abstract class Product {
    private id: number;
    private description: string;
-    private rating : string;
+    private rating : number;
     private price: number;
     private category : string;
     private title : string;
     private discountedPrice: number;
     private discountPercentage: number;
     
-    constructor(id: number, price:number, category: string, title : string, discountedPrice: number, discountPercentage: number, description: string, rating: string){
+    constructor(id: number, price:number, category: string, title : string, discountedPrice: number, discountPercentage: number, description: string, rating: number){
 
-        this.id = id,
-        this.price = price,
-        this.category =category,
-        this.title = title,
-        this.discountedPrice = discountedPrice,
-        this.discountPercentage = discountPercentage,
-        this.description = description,
+        this.id = id;
+        this.price = price;
+        this.category =category;
+        this.title = title;
+        this.discountedPrice = discountedPrice;
+        this.discountPercentage = discountPercentage;
+        this.description = description;
         this.rating = rating
 
     }
+    protected getId() {
+      return this.id;
+    }
+    protected setId(v: number){
+      this.id = v;
+    }
 
+    protected getPrice() {
+      return this.price;
+    }
+    protected setPrice(v: number){
+      this.price = v;
+    }
+    protected getDiscountedPrice() {
+      return this.discountedPrice;
+    }
+    protected setDiscountedPrice(v: number){
+      this.discountedPrice = v;
+    }
+    protected getDescription() {
+      return this.description;
+    }
+    protected setDescription(v: string){
+      this.description = v;
+    }
+
+    protected getRating() {
+      return this.rating;
+    }
+    protected setRating(v: number){
+      this.rating = v;
+    }
+    protected getCategory() {
+      return this.category;
+    }
+    protected setCategory(v: string){
+      this.category = v;
+    }
+    protected getTitle() {
+      return this.title;
+    }
+    protected setTitle(v: string){
+      this.title = v;
+    }
+    protected getDiscountPercentage() {
+      return this.discountPercentage;
+    }
+    protected setDiscountPercentage(v: number){
+      this.discountPercentage = v;
+    }
     
  public displayDetails(): string {
-    return `Id: ${this.id}, Description :${this.description}, Rating : ${this.rating}, Price: ${this.price.toFixed(2)}, category: ${this.category}, Discount Percentage : ${this.discountPercentage}`;
+    return `Id: ${this.id}, Description :${this.description},
+    Rating : ${this.rating}, Price: ${this.price.toFixed(2)}, 
+    category: ${this.category}, Discount Percentage : ${this.discountPercentage}`;
   }
   abstract getPriceWithTax(): number;
+  abstract getPriceWithDiscount(): number;
 }
  
