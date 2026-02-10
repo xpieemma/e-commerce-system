@@ -9,9 +9,9 @@ export class ElectronicsProduct extends Product {
     }
     getPriceWithTax(): number {
         const tax = calculateTax(
-            this.getPrice(),
+            this.getPriceWithDiscount(),
             this.getCategory()
         );
-        return Number ((this.getPrice() + calculateTax(this.getPrice(), this.getCategory())).toFixed(2));
+        return Number ((this.getPriceWithDiscount() + tax).toFixed(2));
     }
 }

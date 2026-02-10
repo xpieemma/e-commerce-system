@@ -13,10 +13,10 @@ export class GroceryProduct extends Product {
 
     getPriceWithTax(): number {
         const groceryTax = calculateTax(
-            this.getPrice(),
+            this.getPriceWithDiscount(),
             this.getCategory()
         );
     
-    return Number ((this.getPrice() + groceryTax).toFixed(2));
+    return Number ((this.getPriceWithDiscount() + groceryTax).toFixed(2));
     }
 }
