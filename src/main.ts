@@ -1,6 +1,7 @@
 // src/main.ts
 
 import { ElectronicsProduct } from "./models/ElectronicsProduct.ts";
+import { GroceryProduct } from "./models/GroceryProduct.ts";
 import { fetchProducts } from "./services/apiService.ts";
 import { handleError } from "./utils/errorHandler.ts";
 
@@ -23,6 +24,21 @@ import { handleError } from "./utils/errorHandler.ts";
 async function getDisplayProducts() {
     try {
 const product = await fetchProducts();
+
+const groceryProd : GroceryProduct[] = product.map((prod) => {
+    if (prod.category.toLocaleLowerCase() === "groceries"){
+        return new GroceryProduct(
+        prod.id,
+        prod.price,
+        prod.category,
+        prod.title,
+        prod.discountedPrice,
+        prod.discountPercentage, prod.description,
+        prod.rating
+
+        );
+    }
+})
 
 const products : ElectronicsProduct[] = product.map((prod : any) => {
 return new ElectronicsProduct (
