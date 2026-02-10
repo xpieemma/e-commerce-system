@@ -55,7 +55,7 @@
     protected setDiscountedPrice(v: number){
       this.discountedPrice = v;
     }
-    protected getDescription() {
+     getDescription() {
       return this.description;
     }
     protected setDescription(v: string){
