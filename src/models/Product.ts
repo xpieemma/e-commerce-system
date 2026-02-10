@@ -74,7 +74,7 @@
     protected setCategory(v: string){
       this.category = v;
     }
-    protected getTitle() {
+     getTitle() {
       return this.title;
     }
     protected setTitle(v: string){
