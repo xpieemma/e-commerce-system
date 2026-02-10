@@ -4,10 +4,10 @@ import { Product } from "./Product.ts";
 
 export class GroceryProduct extends Product {
     getPriceWithDiscount(): number {
-        return calculateDiscountPrice(
+        return Number ( calculateDiscountPrice(
             this.getPrice(),
             this.getDiscountPercentage()
-        );
+        ).toFixed(2));
         
     }
 
@@ -17,6 +17,6 @@ export class GroceryProduct extends Product {
             this.getCategory()
         );
     
-    return this.getPrice() + groceryTax;
+    return Number ((this.getPrice() + groceryTax).toFixed(2));
     }
 }

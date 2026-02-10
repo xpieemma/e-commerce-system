@@ -5,13 +5,13 @@ import { Product } from "./Product.ts";
 
 export class ElectronicsProduct extends Product {
     getPriceWithDiscount(): number {
-        return calculateDiscountPrice(this.getPrice(), this.getDiscountPercentage());
+        return Number (calculateDiscountPrice(this.getPrice(), this.getDiscountPercentage()).toFixed(2));
     }
     getPriceWithTax(): number {
         const tax = calculateTax(
             this.getPrice(),
             this.getCategory()
         );
-        return this.getPrice() + tax;
+        return Number ((this.getPrice() + calculateTax(this.getPrice(), this.getCategory())).toFixed(2));
     }
 }

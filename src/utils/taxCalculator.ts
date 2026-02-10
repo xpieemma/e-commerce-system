@@ -19,7 +19,7 @@ export function calculateTax(price: number, category: string) : number {
     const taxStandard = .0475;
     const taxGrocery = .03;
 
-    const rate =  category.toLocaleLowerCase() === 'grocery' ?  taxGrocery : taxStandard;
+    const rate =  category.toLowerCase() === 'groceries' ?  taxGrocery : taxStandard;
     // ?  true : false 
     return price * rate;
 }

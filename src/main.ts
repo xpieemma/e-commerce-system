@@ -52,10 +52,10 @@ return new ElectronicsProduct (
 });
 products.forEach((p) => {
     console.log(p.displayDetails());
-    console.log("You save $" )
-    console.log("$", p.getPriceWithDiscount(), "after discount");
-    console.log("$", Number ((p.getPriceWithTax() - p.getPriceWithDiscount()).toFixed(2)), "tax")
-    console.log("$", p.getPriceWithTax(), "with tax")
+    console.log(`You save: $${(p.getPriceWithDiscount()- p.getPriceWithDiscount()).toFixed(2)}` )
+    console.log(`$${p.getPriceWithDiscount()} after discount`);
+    console.log(`$${(p.getPriceWithTax() - p.getPriceWithDiscount()).toFixed(2)} tax`)
+    console.log(`$${p.getPriceWithTax()} with tax`)
     console.log("\n");
 })
     } catch (err){

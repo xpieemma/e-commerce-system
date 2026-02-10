@@ -87,10 +87,14 @@
       this.discountPercentage = v;
     }
     
- public displayDetails(): string {
-    return `Id: ${this.id}, Description :${this.description},
-    Rating : ${this.rating}, Price: ${this.price.toFixed(2)}, 
-    category: ${this.category}, Discount Percentage : ${this.discountPercentage}`;
+  displayDetails(): string {
+    return `Id: ${this.getId()}, Description :${this.getDescription()}
+    Title: ${this.getTitle()}
+    Description: ${this.getDescription()}
+    Category: ${this.getCategory()}
+    Rating : ${this.getRating()}
+    Price: ${this.getPrice().toFixed(2)}
+   Discount Percentage : ${this.getDiscountPercentage()}%`;
   }
   abstract getPriceWithTax(): number;
   abstract getPriceWithDiscount(): number;
