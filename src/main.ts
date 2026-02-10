@@ -1,5 +1,6 @@
 // src/main.ts
 
+import { ProductFactory } from "./factory/ProductFactory.ts";
 import { ElectronicsProduct } from "./models/ElectronicsProduct.ts";
 import { GroceryProduct } from "./models/GroceryProduct.ts";
 import { fetchProducts } from "./services/apiService.ts";
@@ -26,30 +27,10 @@ async function getDisplayProducts() {
 const product = await fetchProducts();
 
 const products : (GroceryProduct | ElectronicsProduct) [] = product.map((prod: any) => {
-    if (prod.category.toLocaleLowerCase() === "groceries"){
-        return new GroceryProduct(
-        prod.id,
-        prod.price,
-        prod.category,
-        prod.title,
-        prod.discountedPrice,
-        prod.discountPercentage, prod.description,
-        prod.rating
+    ProductFactory.create(prod)
+    
+    });
 
-        );
-    }
-
-
-return new ElectronicsProduct (
-        prod.id,
-        prod.price,
-        prod.category,
-        prod.title,
-        prod.discountedPrice,
-        prod.discountPercentage, prod.description,
-        prod.rating
-    );
-});
 products.forEach((p) => {
     console.log(p.displayDetails());
     console.log(`You save: $${(p.getPrice()- p.getPriceWithDiscount()).toFixed(2)}` )
