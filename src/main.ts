@@ -25,7 +25,7 @@ async function getDisplayProducts() {
     try {
 const product = await fetchProducts();
 
-const groceryProd : GroceryProduct[] = product.map((prod) => {
+const products : (GroceryProduct | ElectronicsProduct) [] = product.map((prod: any) => {
     if (prod.category.toLocaleLowerCase() === "groceries"){
         return new GroceryProduct(
         prod.id,
@@ -38,9 +38,8 @@ const groceryProd : GroceryProduct[] = product.map((prod) => {
 
         );
     }
-})
 
-const products : ElectronicsProduct[] = product.map((prod : any) => {
+
 return new ElectronicsProduct (
         prod.id,
         prod.price,
@@ -53,8 +52,10 @@ return new ElectronicsProduct (
 });
 products.forEach((p) => {
     console.log(p.displayDetails());
-    console.log(p.getPriceWithDiscount(), "after discount");
-    console.log(p.getPriceWithTax(), "after tax")
+    console.log("You save $" )
+    console.log("$", p.getPriceWithDiscount(), "after discount");
+    console.log("$", Number ((p.getPriceWithTax() - p.getPriceWithDiscount()).toFixed(2)), "tax")
+    console.log("$", p.getPriceWithTax(), "with tax")
     console.log("\n");
 })
     } catch (err){
