@@ -13,13 +13,13 @@
 // however, products with a category of “groceries” 
 // should only be taxed at 3%.
 
-import { Product } from "../models/Product.ts";
+// import { Product } from "../models/Product.ts";
 
-function calculateTax(product : Product) {
+export function calculateTax(price: number, category: string) : number {
     const taxStandard = .0475;
     const taxGrocery = .03;
 
-    let rate =  product.category === 'grocery' ?  taxGrocery : taxStandard;
+    const rate =  category.toLocaleLowerCase() === 'grocery' ?  taxGrocery : taxStandard;
     // ?  true : false 
-    return product.price +(product.price * rate);
+    return price * rate;
 }

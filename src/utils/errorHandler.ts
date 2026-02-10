@@ -4,7 +4,7 @@
 // to handle different types of errors gracefully.
 
 
-class CustomError extends Error {
+export class CustomError extends Error {
 
     constructor ( message: string){
         super (message);
@@ -12,7 +12,7 @@ class CustomError extends Error {
     }
 }
 
-function handleError (err: unknown) {
+export function handleError (err: unknown) {
     if (err instanceof CustomError){
         console.error(`[API Error] ${err.message}`)
     } else if (err instanceof Error) {
