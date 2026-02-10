@@ -43,7 +43,7 @@
       this.id = v;
     }
 
-    protected getPrice() {
+     getPrice() {
       return this.price;
     }
     protected setPrice(v: number){
